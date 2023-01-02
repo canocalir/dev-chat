@@ -19,6 +19,10 @@ const SideBarLinkContainer = styled.div`
   }
 `;
 
-const SideBarLinkChannel = styled.div``;
+const SideBarLinkChannel = styled.h3`
+    font-size: 1rem;
+    padding: 0.6rem;
+    font-weight: 400;
+`;
 
 export { SideBarLinkContainer, SideBarLinkChannel };

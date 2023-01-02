@@ -36,6 +36,8 @@ const ModalBody = styled.div`
       font-size: 1rem;
       padding-left: 1rem;
       border: none;
+      background-color: #c4dd54;
+      color: #353535;
     }
   }
   > h3 {
@@ -53,7 +55,8 @@ const ModalButton = styled.button`
   background-color: #90c037;
   color: #ffffff;
   font-weight: 600;
-  padding: 1rem;
+  padding: 0.6rem;
+  width: 100%;
   border-radius: 0.5rem;
   font-size: 1rem;
   &:hover {
