@@ -1,10 +1,15 @@
+import { useAppDispatch } from "../../app/hooks";
 import { SideBarLinkProps } from "../../common/types/types";
+import { openModal } from "../../features/modalSlice";
 import { SideBarLinkChannel, SideBarLinkContainer } from "./SidebarLink.styled";
 
-const SidebarLink = ({ Icon, title, addChannel }: SideBarLinkProps) => {
+const SidebarLink = ({ Icon, title, addChannel, id }: SideBarLinkProps) => {
+  const dispatch = useAppDispatch();
+
   const iconConditional = Icon && (
     <Icon fontSize="small" style={{ padding: 10 }} />
   );
+
   const titleConditional = !Icon ? (
     <SideBarLinkChannel>
       <span>#</span>
@@ -14,15 +19,14 @@ const SidebarLink = ({ Icon, title, addChannel }: SideBarLinkProps) => {
     <h3>{title}</h3>
   );
 
-  const addChannelHandler = () => {
+  const openModalHandler = () => {
+    dispatch(openModal());
+  };
 
-  }
-  const selectChannelHandler = () => {
-    
-  }
+  const selectChannelHandler = () => {};
 
   const addChannelConditional = addChannel
-    ? addChannelHandler
+    ? openModalHandler
     : selectChannelHandler;
 
   return (

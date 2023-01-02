@@ -1,34 +1,58 @@
-import SidebarLink from "../SidebarLink/SidebarLink"
-import { SidebarContainer, SidebarHeader, SidebarInfo } from "./Sidebar.styled"
-import { Add, Apps, BookmarkBorder, Create, Drafts, ExpandLess, ExpandMore, FiberManualRecord, FileCopy, Inbox, InsertComment, PeopleAlt } from "@material-ui/icons"
+import { collection, doc } from "firebase/firestore";
+import SidebarLink from "../SidebarLink/SidebarLink";
+import { SidebarContainer, SidebarHeader, SidebarInfo } from "./Sidebar.styled";
+import {
+  Add,
+  Apps,
+  BookmarkBorder,
+  Create,
+  Drafts,
+  ExpandLess,
+  ExpandMore,
+  FiberManualRecord,
+  FileCopy,
+  Inbox,
+  InsertComment,
+  PeopleAlt,
+} from "@material-ui/icons";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { db } from "../../config/firebase";
 
 const Sidebar = () => {
+  const [channels, loading] = useCollection(collection(db, "rooms"));
   return (
     <SidebarContainer>
       <SidebarHeader>
         <SidebarInfo>
           <h2>Dev Chat Community</h2>
           <h3>
-            <FiberManualRecord/>
+            <FiberManualRecord />
             Can Ocalir
           </h3>
         </SidebarInfo>
-        <Create/>
+        <Create />
       </SidebarHeader>
-      <SidebarLink Icon={InsertComment} title={"Threads"}/>
-      <SidebarLink Icon={Inbox} title={"Mentions & Reactions"}/>
-      <SidebarLink Icon={Drafts} title={"Saved Items"}/>
-      <SidebarLink Icon={BookmarkBorder} title={"Channel Browser"}/>
-      <SidebarLink Icon={PeopleAlt} title={"People & User Groups"}/>
-      <SidebarLink Icon={Apps} title={"Apps"}/>
-      <SidebarLink Icon={FileCopy} title={"File Browser"}/>
-      <SidebarLink Icon={ExpandLess} title={"Show less"}/>
+      <SidebarLink Icon={InsertComment} title={"Threads"} />
+      <SidebarLink Icon={Inbox} title={"Mentions & Reactions"} />
+      <SidebarLink Icon={Drafts} title={"Saved Items"} />
+      <SidebarLink Icon={BookmarkBorder} title={"Channel Browser"} />
+      <SidebarLink Icon={PeopleAlt} title={"People & User Groups"} />
+      <SidebarLink Icon={Apps} title={"Apps"} />
+      <SidebarLink Icon={FileCopy} title={"File Browser"} />
+      <SidebarLink Icon={ExpandLess} title={"Show less"} />
       <hr />
-      <SidebarLink Icon={ExpandMore} title={"Channels"}/>
+      <SidebarLink Icon={ExpandMore} title={"Channels"} />
       <hr />
-      <SidebarLink Icon={Add} addChannel title={"Add Channel"}/>
+      <SidebarLink Icon={Add} addChannel title={"Add Channel"} />
+      {channels?.docs.map((channel) => (
+        <SidebarLink
+          id={channel.id}
+          key={channel.id}
+          title={channel.data().channelName}
+        />
+      ))}
     </SidebarContainer>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

@@ -1,17 +1,19 @@
-import firebase from "firebase/compat/app";
+import { initializeApp } from "firebase/app";
+import {getFirestore} from 'firebase/firestore'
+import {getAuth, GoogleAuthProvider} from 'firebase/auth'
 
 export const firebaseConfig = {
-  apiKey: process.env.REACT_APP_APIKEY,
-  authDomain: process.env.REACT_APP_AUTHDOMAIN,
-  projectId: process.env.REACT_APP_PROJECTID,
-  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-  messagingSenderId: process.env.REACT_APP_SENDERID,
-  appId: process.env.REACT_APP_APPID,
+  apiKey: import.meta.env.VITE_APP_APIKEY,
+  authDomain: import.meta.env.VITE_APP_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_APP_PROJECTID,
+  storageBucket: import.meta.env.VITE_APP_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_APP_SENDERID,
+  appId: import.meta.env.VITE_APP_APPID,
 };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const db = firebaseApp.firestore();
-const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
+const auth = getAuth(app)
+const provider = new GoogleAuthProvider()
 
 export { auth, provider, db };
