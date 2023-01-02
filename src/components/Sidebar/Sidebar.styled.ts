@@ -6,6 +6,10 @@ const SidebarContainer = styled.div`
   color: #ffffff;
   max-width: 20rem;
   margin-top: 3.9rem;
+  hr{
+    margin: 0.6rem 0 0.6rem 0;
+    border: 0.07rem solid #96c723;
+  }
 `;
 
 const SidebarHeader = styled.div`
