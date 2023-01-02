@@ -12,10 +12,12 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@reduxjs/toolkit": "^1.9.1",
+    "@types/styled-components": "^5.1.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.6.1"
+    "react-router-dom": "^6.6.1",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
@@ -24,5 +26,8 @@
     "@vitejs/plugin-react": "^3.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }
