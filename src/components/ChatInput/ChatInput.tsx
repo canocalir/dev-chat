@@ -4,9 +4,11 @@ import React, { FC, useState } from "react";
 import { db } from "../../config/firebase";
 import { InputContainer } from "./ChatInput.styled";
 import { ChatInputProps } from "../../common/types/types";
+import useGetGoogleData from "../../hooks/useGetGoogleData";
 
 const ChatInput:FC<ChatInputProps> = ({ channelName, channelId, scroll }) => {
   const [inputText, setInputText] = useState<string>("");
+  const { userName, userImage } = useGetGoogleData();
 
   const sendMessageHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -16,8 +18,8 @@ const ChatInput:FC<ChatInputProps> = ({ channelName, channelId, scroll }) => {
     addDoc(messageRef, {
       message: inputText,
       timestamp: Timestamp.fromDate(new Date()),
-      user: "Can",
-      userImage: "",
+      user: userName,
+      userImage: userImage,
     });
     scroll();
     setInputText("");

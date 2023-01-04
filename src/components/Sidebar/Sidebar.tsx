@@ -17,9 +17,11 @@ import {
 } from "@material-ui/icons";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../../config/firebase";
+import useGetGoogleData from "../../hooks/useGetGoogleData";
 
 const Sidebar = () => {
   const [channels, loading, error] = useCollection(collection(db, "rooms"));
+  const { userName } = useGetGoogleData();
 
   return (
     <SidebarContainer>
@@ -28,7 +30,7 @@ const Sidebar = () => {
           <h2>Dev Chat Community</h2>
           <h3>
             <FiberManualRecord />
-            Can Ocalir
+            {userName}
           </h3>
         </SidebarInfo>
         <Create />

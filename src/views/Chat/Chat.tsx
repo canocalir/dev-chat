@@ -44,21 +44,8 @@ const Chat: FC = () => {
     scrollToBottom();
   }, [roomId, loading]);
 
-  const messages = roomMessages?.docs.map((doc) => {
-    const { message, timestamp, user, userImage } = doc.data();
-    return (
-      <Message
-        key={doc.id}
-        message={message}
-        timestamp={timestamp}
-        user={user}
-        userImage={userImage}
-      />
-    );
-  });
-
-  return (
-    <ChatContainer>
+  const conditionalRenderingMessages = roomDetails && roomMessages && (
+    <>
       <>
         <ChatHeader>
           <ChatHeaderLeft>
@@ -76,7 +63,18 @@ const Chat: FC = () => {
         </ChatHeader>
       </>
       <ChatMessages>
-        {messages}
+        {roomMessages?.docs.map((doc) => {
+          const { message, timestamp, user, userImage } = doc.data();
+          return (
+            <Message
+              key={doc.id}
+              message={message}
+              timestamp={timestamp}
+              user={user}
+              userImage={userImage}
+            />
+          );
+        })}
         <ToBottom ref={chatRef} />
       </ChatMessages>
       <ChatInput
@@ -84,7 +82,13 @@ const Chat: FC = () => {
         channelId={roomId}
         channelName={activeRoomName}
       />
-    </ChatContainer>
+    </>
+  );
+
+  return (
+  <ChatContainer>
+    {conditionalRenderingMessages}
+  </ChatContainer>
   );
 };
 

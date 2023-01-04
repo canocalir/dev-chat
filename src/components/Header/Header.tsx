@@ -7,13 +7,20 @@ import {
   MainAvatar,
   RightSection,
 } from "./Header.styled";
+import { auth } from "../../config/firebase";
+import useGetGoogleData from "../../hooks/useGetGoogleData";
 
 const Header: FC = () => {
+  const { userName, userImage } = useGetGoogleData();
+
+  const signOutHandler = () => {
+    auth.signOut();
+  };
+
   return (
     <HeaderContainer>
       <LeftSection>
-        <MainAvatar //TODO: Add onclick
-        />
+        <MainAvatar onClick={signOutHandler} alt={userName} src={userImage} />
         <AccessTime />
       </LeftSection>
       <HeaderSearch>

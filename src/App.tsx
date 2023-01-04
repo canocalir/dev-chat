@@ -3,9 +3,11 @@ import { useAppSelector } from "./app/hooks";
 import CustomModal from "./components/Modal/Modal";
 import AppRouter from "./router/AppRouter";
 import "react-toastify/dist/ReactToastify.css";
+import { FC } from "react";
 
-const App = () => {
+const App: FC = () => {
   const { isOpen } = useAppSelector((state) => state.modal);
+
   return (
     <>
       {isOpen && <CustomModal />}
