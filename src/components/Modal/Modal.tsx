@@ -17,9 +17,9 @@ const CustomModal = () => {
   const dispatch = useAppDispatch();
 
   const channelNameSetHandler = (
-    event: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setChannelName(event.target.value);
+    setChannelName((e.target.value));
   };
 
   const channelNameToDatabaseHandler = (

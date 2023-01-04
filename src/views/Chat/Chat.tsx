@@ -2,42 +2,65 @@ import { InfoOutlined, StarBorderOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import { useAppSelector } from "../../app/hooks";
 import ChatInput from "../../components/ChatInput/ChatInput";
+import { collection, doc, orderBy, query } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import { useCollection, useDocument } from "react-firebase-hooks/firestore";
+import Message from "../../components/Message/Message";
 
 const Chat = () => {
-  const {roomId} = useAppSelector(state => state.room)
+  const { roomId } = useAppSelector((state) => state.room);
+  const [roomDetails] = useDocument(roomId && doc(db, "rooms", roomId));
+
+  const [roomMessages] = useCollection(
+    roomId &&
+      query(
+        collection(db, "rooms", roomId, "messages"),
+        orderBy("timestamp", "asc")
+      )
+  );
+
+  const activeRoomName = roomDetails?.data()?.channelName;
+
   return (
     <ChatContainer>
       <>
-      <ChatHeader>
-        <ChatHeaderLeft>
-          <h4>
-            <strong>#Room name</strong>
-          </h4>
-          <StarBorderOutlined />
-        </ChatHeaderLeft>
-        <ChatHeaderRight>
-          <p>
-            <InfoOutlined />
-            Details
-          </p>
-        </ChatHeaderRight>
-      </ChatHeader>
+        <ChatHeader>
+          <ChatHeaderLeft>
+            <h4>
+              <strong>#{activeRoomName}</strong>
+            </h4>
+            <StarBorderOutlined />
+          </ChatHeaderLeft>
+          <ChatHeaderRight>
+            <p>
+              <InfoOutlined />
+              Details
+            </p>
+          </ChatHeaderRight>
+        </ChatHeader>
       </>
       <ChatMessages>
-    
+        {roomMessages?.docs.map((doc) => {
+          const { message, timestamp, user, userImage } = doc.data();
+          return (
+            <Message
+              key={doc.id}
+              message={message}
+              timestamp={timestamp}
+              user={user}
+              userImage={userImage}
+            />
+          );
+        })}
       </ChatMessages>
-      <ChatInput
-      channelId={roomId}
-      />
+      <ChatInput channelId={roomId} channelName={activeRoomName} />
     </ChatContainer>
   );
 };
 
 export default Chat;
 
-const ChatMessages = styled.div`
-  
-`
+const ChatMessages = styled.div``;
 
 const ChatContainer = styled.div`
   flex: 0.7;
