@@ -9,7 +9,7 @@ const SidebarLink = ({ Icon, title, addChannel, id }: SideBarLinkProps) => {
   const iconConditional = Icon && (
     <Icon fontSize="small" style={{ padding: 10 }} />
   );
-
+  
   const titleConditional = !Icon ? (
     <SideBarLinkChannel>
       <span>#</span>

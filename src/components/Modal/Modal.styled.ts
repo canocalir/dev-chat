@@ -41,7 +41,7 @@ const ModalBody = styled.div`
     }
   }
   > h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #ffffff;
   }
   @media (max-width: 768px) {
@@ -69,7 +69,7 @@ const CloseModalButton = styled.button`
   background-color: red;
   color: #ffffff;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   position: absolute;
   top: 1rem;

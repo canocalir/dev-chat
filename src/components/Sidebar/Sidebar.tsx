@@ -1,4 +1,4 @@
-import { collection, doc } from "firebase/firestore";
+import { collection } from "firebase/firestore";
 import SidebarLink from "../SidebarLink/SidebarLink";
 import { SidebarContainer, SidebarHeader, SidebarInfo } from "./Sidebar.styled";
 import {
@@ -20,6 +20,7 @@ import { db } from "../../config/firebase";
 
 const Sidebar = () => {
   const [channels, loading, error] = useCollection(collection(db, "rooms"));
+
   return (
     <SidebarContainer>
       <SidebarHeader>
