@@ -1,8 +1,14 @@
 import { AccessTime, Search, HelpOutline } from "@material-ui/icons";
 import { FC } from "react";
-import { HeaderContainer, HeaderSearch, LeftSection, MainAvatar, RightSection } from "./Header.styled";
+import {
+  HeaderContainer,
+  HeaderSearch,
+  LeftSection,
+  MainAvatar,
+  RightSection,
+} from "./Header.styled";
 
-const Header:FC = () => {
+const Header: FC = () => {
   return (
     <HeaderContainer>
       <LeftSection>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import {
   ModalBody,
   ModalButton,
@@ -7,19 +7,17 @@ import {
 } from "./Modal.styled";
 import { useAppDispatch } from "../../app/hooks";
 import { openModal, selectName } from "../../features/modalSlice";
-import { toast } from "react-toastify";
 import { db } from "../../config/firebase";
 import { addDoc, collection } from "firebase/firestore";
+import { toastError, toastSuccess } from "../../helpers/toastify/success";
 
-const CustomModal = () => {
+const CustomModal: FC = () => {
   const [channelName, setChannelName] = useState<string>("");
 
   const dispatch = useAppDispatch();
 
-  const channelNameSetHandler = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setChannelName((e.target.value));
+  const channelNameSetHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setChannelName(e.target.value);
   };
 
   const channelNameToDatabaseHandler = (
@@ -27,32 +25,16 @@ const CustomModal = () => {
   ) => {
     event.preventDefault();
     if (channelName) {
+      //Send channel name to database
       addDoc(collection(db, "rooms"), {
         channelName: channelName,
       });
+      //Send selected name to global store
       dispatch(selectName(channelName));
       dispatch(openModal());
-      toast(`${channelName} channel successfully created`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toastSuccess(channelName);
     } else {
-      toast("Enter a channel name!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toastError();
     }
   };
 

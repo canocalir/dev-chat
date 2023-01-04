@@ -1,27 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ModalSliceProps } from "../common/types/types";
 
-interface InitialStateProps {
-    isOpen: boolean;
-    name: string;
-}
-
-const initialState: InitialStateProps = {
-    isOpen: false,
-    name: ''
-}
+const initialState: ModalSliceProps = {
+  isOpen: false,
+  name: "",
+};
 
 export const modalSlice = createSlice({
-    name: 'modal',
-    initialState,
-    reducers:{
-        openModal: (state) => {
-            state.isOpen = !state.isOpen
-        },
-        selectName: (state, action: PayloadAction<string>) => {
-            state.name = action.payload
-        }
-    }
-})
+  name: "modal",
+  initialState,
+  reducers: {
+    openModal: (state) => {
+      state.isOpen = !state.isOpen;
+    },
+    selectName: (state, action: PayloadAction<string>) => {
+      state.name = action.payload;
+    },
+  },
+});
 
-export const {openModal, selectName} = modalSlice.actions
-export default modalSlice.reducer
+export const { openModal, selectName } = modalSlice.actions;
+export default modalSlice.reducer;

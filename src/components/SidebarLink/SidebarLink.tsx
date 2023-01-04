@@ -1,15 +1,16 @@
+import { FC } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { SideBarLinkProps } from "../../common/types/types";
 import { openModal } from "../../features/modalSlice";
 import { enterRoom } from "../../features/roomSlice";
 import { SideBarLinkChannel, SideBarLinkContainer } from "./SidebarLink.styled";
 
-const SidebarLink = ({ Icon, title, addChannel, id }: SideBarLinkProps) => {
+const SidebarLink: FC<SideBarLinkProps> = ({ Icon, title, addChannel, id }) => {
   const dispatch = useAppDispatch();
   const iconConditional = Icon && (
     <Icon fontSize="small" style={{ padding: 10 }} />
   );
-  
+
   const titleConditional = !Icon ? (
     <SideBarLinkChannel>
       <span>#</span>
@@ -24,9 +25,12 @@ const SidebarLink = ({ Icon, title, addChannel, id }: SideBarLinkProps) => {
   };
 
   const selectChannelHandler = () => {
-    id && dispatch(enterRoom({
-        roomId: id
-    }))
+    id &&
+      dispatch(
+        enterRoom({
+          roomId: id,
+        })
+      );
   };
 
   const addChannelConditional = addChannel

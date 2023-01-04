@@ -6,7 +6,7 @@ const SidebarContainer = styled.div`
   color: #ffffff;
   max-width: 20rem;
   margin-top: 3.9rem;
-  hr{
+  hr {
     margin: 0.6rem 0 0.6rem 0;
     border: 0.07rem solid #96c723;
   }
@@ -47,9 +47,9 @@ const SidebarInfo = styled.div`
     font-size: 1.1rem;
     font-weight: 400;
     .MuiSvgIcon-root {
-        font-size: 1rem;
-        color: green;
-        margin: 0.1rem 0.2rem 0 0;
+      font-size: 1rem;
+      color: green;
+      margin: 0.1rem 0.2rem 0 0;
     }
   }
 `;

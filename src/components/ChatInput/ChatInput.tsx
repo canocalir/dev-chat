@@ -1,28 +1,28 @@
 import { Button } from "@material-ui/core";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { FC, useState } from "react";
 import { db } from "../../config/firebase";
+import { InputContainer } from "./ChatInput.styled";
+import { ChatInputProps } from "../../common/types/types";
 
-type Props = {
-  channelId: string | null;
-  channelName: string | null;
-};
-
-const ChatInput = ({ channelName, channelId }: Props) => {
+const ChatInput:FC<ChatInputProps> = ({ channelName, channelId, scroll }) => {
   const [inputText, setInputText] = useState<string>("");
+
   const sendMessageHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if(!channelId) return false
-    const messageRef = collection(db, "rooms", channelId, "messages")
+    if (!channelId) return false;
+    //Send message to the database
+    const messageRef = collection(db, "rooms", channelId, "messages");
     addDoc(messageRef, {
       message: inputText,
       timestamp: Timestamp.fromDate(new Date()),
-      user: 'Can',
-      userImage: ''
+      user: "Can",
+      userImage: "",
     });
-    setInputText('')
+    scroll();
+    setInputText("");
   };
+  
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
   };
@@ -31,7 +31,7 @@ const ChatInput = ({ channelName, channelId }: Props) => {
     <InputContainer>
       <form>
         <input
-        value={inputText}
+          value={inputText}
           onChange={inputHandler}
           placeholder={`Message #${channelName}`}
           type="text"
@@ -45,24 +45,3 @@ const ChatInput = ({ channelName, channelId }: Props) => {
 };
 
 export default ChatInput;
-
-const InputContainer = styled.div`
-  border-radius: 1.2rem;
-  form {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    input {
-      bottom: 2rem;
-      width: 60%;
-      border-radius: 0.3rem;
-      padding: 1rem;
-      border: 0.1rem solid #666;
-      outline: none;
-      position: fixed;
-    }
-    button {
-      display: none;
-    }
-  }
-`;
