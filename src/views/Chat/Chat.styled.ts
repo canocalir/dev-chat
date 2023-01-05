@@ -6,15 +6,15 @@ const ChatContainer = styled.div`
   flex: 0.7;
   flex-grow: 1;
   overflow-y: scroll;
-  margin: 4rem 0 0 1rem;
-  margin-top: 5rem;
+  margin: 4rem 0 0 0;
+  margin-top: 4rem;
 `;
 
 const ChatHeader = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1.2rem;
-  border-bottom: 0.1rem solid #e9e9e9;
+  border-bottom: 0.1rem solid ${(props) => props.theme.midBorderColor};
 `;
 
 const ChatHeaderRight = styled.div`
@@ -43,7 +43,30 @@ const ChatHeaderLeft = styled.div`
 `;
 
 const ToBottom = styled.div`
-  padding-bottom: 14rem;
+  padding-bottom: 12rem;
 `;
 
-export {ToBottom, ChatContainer, ChatHeader, ChatHeaderLeft, ChatHeaderRight, ChatMessages}
+const ChatLoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+`;
+
+const ChatLoadingInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export {
+  ToBottom,
+  ChatContainer,
+  ChatHeader,
+  ChatHeaderLeft,
+  ChatHeaderRight,
+  ChatMessages,
+  ChatLoadingContainer,
+  ChatLoadingInner,
+};

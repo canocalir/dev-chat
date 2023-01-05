@@ -4,8 +4,19 @@ const SidebarContainer = styled.div`
   background-color: var(--devchat-color);
   flex: 0.3;
   color: #ffffff;
+  min-width: 15rem;
   max-width: 20rem;
   margin-top: 3.9rem;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 0.3rem;
+    &-track {
+      background: #dfdfdf;
+    }
+    &-thumb {
+      background: #96c723;
+    }
+  }
   hr {
     margin: 0.6rem 0 0.6rem 0;
     border: 0.07rem solid #96c723;
@@ -21,7 +32,7 @@ const SidebarHeader = styled.div`
   > .MuiSvgIcon-root {
     color: #96c723;
     padding: 0.7rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     background-color: #ffffff;
     border-radius: 50%;
     cursor: pointer;

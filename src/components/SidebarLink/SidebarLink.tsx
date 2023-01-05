@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch } from "../../app/hooks";
 import { SideBarLinkProps } from "../../common/types/types";
 import { openModal } from "../../features/modalSlice";
 import { enterRoom } from "../../features/roomSlice";

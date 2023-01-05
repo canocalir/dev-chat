@@ -13,7 +13,7 @@ export const toastSuccess = (channel:string) => {
       });
 }
 
-export const toastError = () => {
+export const toastChannelError = () => {
     toast("Enter a channel name!", {
         position: "top-right",
         autoClose: 3000,
@@ -24,4 +24,18 @@ export const toastError = () => {
         progress: undefined,
         theme: "light",
       });
+}
+
+
+export const toastGeneralError = (error:string) => {
+  toast(error, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 }

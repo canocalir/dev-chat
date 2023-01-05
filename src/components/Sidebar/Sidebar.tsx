@@ -16,18 +16,18 @@ import {
   PeopleAlt,
 } from "@material-ui/icons";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { db } from "../../config/firebase";
+import { db } from "../../utils/firebase";
 import useGetGoogleData from "../../hooks/useGetGoogleData";
 
 const Sidebar = () => {
-  const [channels, loading, error] = useCollection(collection(db, "rooms"));
+  const [channels] = useCollection(collection(db, "rooms"));
   const { userName } = useGetGoogleData();
 
   return (
     <SidebarContainer>
       <SidebarHeader>
         <SidebarInfo>
-          <h2>Dev Chat Community</h2>
+          <h2>DevChat 1.0</h2>
           <h3>
             <FiberManualRecord />
             {userName}

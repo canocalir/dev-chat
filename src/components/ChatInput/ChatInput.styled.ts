@@ -14,6 +14,7 @@ const InputContainer = styled.div`
       border: 0.1rem solid #666;
       outline: none;
       position: fixed;
+      font-size: 1rem;
     }
     button {
       display: none;

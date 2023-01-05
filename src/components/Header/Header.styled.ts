@@ -5,8 +5,12 @@ const RightSection = styled.div`
   flex: 0.3;
   display: flex;
   justify-content: flex-end;
+  align-items:center;
+  gap:0.8rem;
   .MuiSvgIcon-root {
     color: #ffffff;
+  }
+  >.avatar{
     margin-right: 2rem;
   }
 `;
@@ -48,12 +52,13 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   padding: 0.7rem 0;
   color: #ffffff;
+  gap:0.2rem;
 `;
 const LeftSection = styled.div`
   flex: 0.3;
   display: flex;
   gap: 1rem;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin: 0 2rem 0 2rem;
   align-items: center;
   .MuiSvgIcon-root {

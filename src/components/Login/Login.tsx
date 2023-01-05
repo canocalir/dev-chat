@@ -3,14 +3,15 @@ import { LoginInnerContainer, LoginOuterContainer } from "./Login.styled";
 import imageLogo from "../../assets/mainlogo.jpg";
 import { Button } from "@material-ui/core";
 import { FC, SyntheticEvent } from "react";
-import { auth, provider } from "../../config/firebase";
+import { auth, provider } from "../../utils/firebase";
 import { signInWithPopup } from "firebase/auth";
+import { toastGeneralError } from "../../helpers/toastify/success";
 
-const Login:FC = () => {
+const Login: FC = () => {
   const googleSignInHandler = (e: SyntheticEvent) => {
     e.preventDefault();
     signInWithPopup(auth, provider).catch((error) => {
-      console.log(error.message);
+      toastGeneralError(error.message);
     });
   };
   return (

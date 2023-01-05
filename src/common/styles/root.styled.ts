@@ -5,4 +5,16 @@ const RootLayout = styled.div`
     height: 100vh;
 `;
 
-export { RootLayout };
+const AppLoadingContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 100vh;
+`
+
+const AppLoadingInnerContents = styled.div`
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+`
+export { RootLayout, AppLoadingContainer, AppLoadingInnerContents };

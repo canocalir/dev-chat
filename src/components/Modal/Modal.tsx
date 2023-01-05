@@ -7,9 +7,9 @@ import {
 } from "./Modal.styled";
 import { useAppDispatch } from "../../app/hooks";
 import { openModal, selectName } from "../../features/modalSlice";
-import { db } from "../../config/firebase";
+import { db } from "../../utils/firebase";
 import { addDoc, collection } from "firebase/firestore";
-import { toastError, toastSuccess } from "../../helpers/toastify/success";
+import { toastChannelError, toastSuccess } from "../../helpers/toastify/success";
 
 const CustomModal: FC = () => {
   const [channelName, setChannelName] = useState<string>("");
@@ -34,7 +34,7 @@ const CustomModal: FC = () => {
       dispatch(openModal());
       toastSuccess(channelName);
     } else {
-      toastError();
+      toastChannelError();
     }
   };
 

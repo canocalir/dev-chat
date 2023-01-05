@@ -7,7 +7,7 @@ import {
   MainAvatar,
   RightSection,
 } from "./Header.styled";
-import { auth } from "../../config/firebase";
+import { auth } from "../../utils/firebase";
 import useGetGoogleData from "../../hooks/useGetGoogleData";
 
 const Header: FC = () => {
@@ -20,7 +20,6 @@ const Header: FC = () => {
   return (
     <HeaderContainer>
       <LeftSection>
-        <MainAvatar onClick={signOutHandler} alt={userName} src={userImage} />
         <AccessTime />
       </LeftSection>
       <HeaderSearch>
@@ -29,6 +28,12 @@ const Header: FC = () => {
       </HeaderSearch>
       <RightSection>
         <HelpOutline />
+        <MainAvatar
+          className="avatar"
+          onClick={signOutHandler}
+          alt={userName}
+          src={userImage}
+        />
       </RightSection>
     </HeaderContainer>
   );

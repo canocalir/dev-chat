@@ -1,7 +1,7 @@
 import { Button } from "@material-ui/core";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import React, { FC, useState } from "react";
-import { db } from "../../config/firebase";
+import { db } from "../../utils/firebase";
 import { InputContainer } from "./ChatInput.styled";
 import { ChatInputProps } from "../../common/types/types";
 import useGetGoogleData from "../../hooks/useGetGoogleData";

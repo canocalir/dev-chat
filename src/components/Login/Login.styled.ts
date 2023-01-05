@@ -3,7 +3,7 @@ import styled from "styled-components";
 const LoginOuterContainer = styled.div`
   display: flex;
   height: 100vh;
-  background: #f8f8f8;
+  background: ${props => props.theme.bgColorMain};
 `;
 
 const LoginInnerContainer = styled.div`
@@ -14,7 +14,7 @@ const LoginInnerContainer = styled.div`
   align-items: center;
   background: #ffffff;
   border-radius: 0.7rem;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: ${props => props.theme.loginBoxShadow};
   img {
     object-fit: contain;
     width: 12rem;

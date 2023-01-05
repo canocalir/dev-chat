@@ -6,9 +6,10 @@ const ModalContainer = styled.div`
   align-items: center;
   background-color: #0000003d;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   width: 100vw;
   height: 100vh;
+  backdrop-filter: blur(0.5rem);
 `;
 
 const ModalBody = styled.div`
@@ -66,14 +67,16 @@ const ModalButton = styled.button`
 `;
 
 const CloseModalButton = styled.button`
-  background-color: red;
+  background-color: #df7e23;
   color: #ffffff;
   font-weight: 600;
-  font-size: 1rem;
-  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 2rem;
   position: absolute;
   top: 1rem;
   right: 1rem;
+  padding: 0.2rem;
   cursor: pointer;
   border: none;
   &:hover {

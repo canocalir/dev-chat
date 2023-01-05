@@ -1,5 +1,5 @@
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../config/firebase";
+import { auth } from "../utils/firebase";
 
 const useGetGoogleData = () => {
   const [user] = useAuthState(auth);
