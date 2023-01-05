@@ -12,21 +12,19 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../utils/firebase";
 import Login from "../components/Login/Login";
 import { Comment } from "react-loader-spinner";
-import imageLogo from '../assets/mainlogo.jpg'
-import { ThemeProvider } from "styled-components";
-import { theme } from "../common/styles/theme";
+import imageLogo from "../assets/mainlogo.jpg";
 import { DoubleArrow } from "@material-ui/icons";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { collapseSidebar } from "../features/sidebarSlice";
 
 const AppRouter = () => {
   const [user, loading] = useAuthState(auth);
-  const dispatch = useAppDispatch()
-  const {isCollapsed} = useAppSelector(state => state.sidebar)
+  const dispatch = useAppDispatch();
+  const { isCollapsed } = useAppSelector((state) => state.sidebar);
 
   const openSideBarHandler = () => {
-    dispatch(collapseSidebar())
-  }
+    dispatch(collapseSidebar());
+  };
 
   if (loading) {
     return (
@@ -48,7 +46,6 @@ const AppRouter = () => {
     );
   }
   return (
-    <ThemeProvider theme={theme}>
     <BrowserRouter>
       {!user ? (
         <Login />
@@ -58,7 +55,7 @@ const AppRouter = () => {
           <RootLayout>
             <Sidebar />
             <OpenSideBarButton>
-              {isCollapsed && <DoubleArrow onClick={openSideBarHandler}/>}
+              {isCollapsed && <DoubleArrow onClick={openSideBarHandler} />}
             </OpenSideBarButton>
             <Routes>
               <Route path="/" element={<Chat />} />
@@ -67,7 +64,6 @@ const AppRouter = () => {
         </>
       )}
     </BrowserRouter>
-    </ThemeProvider>
   );
 };
 
