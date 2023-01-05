@@ -4,6 +4,7 @@ import { SideBarLinkProps } from "../../common/types/types";
 import { openModal } from "../../features/modalSlice";
 import { enterRoom } from "../../features/roomSlice";
 import { SideBarLinkChannel, SideBarLinkContainer } from "./SidebarLink.styled";
+import { collapseSidebar } from "../../features/sidebarSlice";
 
 const SidebarLink: FC<SideBarLinkProps> = ({ Icon, title, addChannel, id }) => {
   const dispatch = useAppDispatch();
@@ -22,6 +23,7 @@ const SidebarLink: FC<SideBarLinkProps> = ({ Icon, title, addChannel, id }) => {
 
   const openModalHandler = () => {
     dispatch(openModal());
+    dispatch(collapseSidebar())
   };
 
   const selectChannelHandler = () => {

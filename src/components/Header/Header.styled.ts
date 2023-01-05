@@ -5,12 +5,13 @@ const RightSection = styled.div`
   flex: 0.3;
   display: flex;
   justify-content: flex-end;
-  align-items:center;
-  gap:0.8rem;
+  align-items: center;
+  gap: 0.8rem;
   .MuiSvgIcon-root {
     color: #ffffff;
+    margin-left: 1rem;
   }
-  >.avatar{
+  > .avatar {
     margin-right: 2rem;
   }
 `;
@@ -44,7 +45,7 @@ const HeaderSearch = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  background-color: var(--devchat-color);
+  background-color: ${(props) => props.theme.mainDarkColor};
   display: flex;
   position: fixed;
   width: 100%;
@@ -52,7 +53,7 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   padding: 0.7rem 0;
   color: #ffffff;
-  gap:0.2rem;
+  gap: 0.2rem;
 `;
 const LeftSection = styled.div`
   flex: 0.3;

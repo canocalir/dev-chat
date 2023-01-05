@@ -16,7 +16,7 @@ const ModalBody = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #809c05;
+  background-color: #fafafa;
   flex-direction: column;
   width: 30%;
   height: fit-content;
@@ -37,13 +37,17 @@ const ModalBody = styled.div`
       font-size: 1rem;
       padding-left: 1rem;
       border: none;
-      background-color: #c4dd54;
+      background-color: #d4d4d4;
       color: #353535;
+      outline: ${(props) => props.theme.modalColor1} 2px solid;
+      &::placeholder {
+        color: #525252;
+      }
     }
   }
   > h3 {
     font-size: 1.5rem;
-    color: #ffffff;
+    color: #181818;
   }
   @media (max-width: 768px) {
     width: 80%;
@@ -53,7 +57,7 @@ const ModalBody = styled.div`
 const ModalButton = styled.button`
   border: none;
   cursor: pointer;
-  background-color: #90c037;
+  background-color: ${(props) => props.theme.modalColor1};
   color: #ffffff;
   font-weight: 600;
   padding: 0.6rem;
@@ -67,12 +71,12 @@ const ModalButton = styled.button`
 `;
 
 const CloseModalButton = styled.button`
-  background-color: #df7e23;
+  background-color: #df3f23;
   color: #ffffff;
   font-weight: 600;
   font-size: 1.2rem;
   border-radius: 50%;
-  width: 2rem;
+  width: 1.8rem;
   position: absolute;
   top: 1rem;
   right: 1rem;

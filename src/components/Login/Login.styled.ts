@@ -21,7 +21,7 @@ const LoginInnerContainer = styled.div`
     margin-bottom: 3rem;
   }
   button {
-    background-color: var(--devchat-color) !important;
+    background-color: ${props => props.theme.mainDarkColor} !important;
     color: #ffffff;
     margin-top: 1rem;
   }

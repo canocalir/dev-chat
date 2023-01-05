@@ -13,18 +13,28 @@ import {
   FileCopy,
   Inbox,
   InsertComment,
+  MenuOpen,
   PeopleAlt,
 } from "@material-ui/icons";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../../utils/firebase";
 import useGetGoogleData from "../../hooks/useGetGoogleData";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { collapseSidebar } from "../../features/sidebarSlice";
 
 const Sidebar = () => {
   const [channels] = useCollection(collection(db, "rooms"));
   const { userName } = useGetGoogleData();
 
+  const dispatch = useAppDispatch();
+  const { isCollapsed } = useAppSelector((state) => state.sidebar);
+
+  const closeSideBarHandler = () => {
+    dispatch(collapseSidebar());
+  };
+
   return (
-    <SidebarContainer>
+    <SidebarContainer sideOpen={isCollapsed}>
       <SidebarHeader>
         <SidebarInfo>
           <h2>DevChat 1.0</h2>
@@ -32,6 +42,10 @@ const Sidebar = () => {
             <FiberManualRecord />
             {userName}
           </h3>
+          <hr />
+          <p onClick={closeSideBarHandler}>
+            <MenuOpen /> Close Sidebar
+          </p>
         </SidebarInfo>
         <Create />
       </SidebarHeader>

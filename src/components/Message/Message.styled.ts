@@ -15,7 +15,7 @@ const MessageStamp = styled.div`
   span {
     font-size: 0.8rem;
     margin-left: 0.5rem;
-    color: #666;
+    color: #666666;
   }
   p {
     margin-top: 0.8rem;

@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import ModalReducer from '../features/modalSlice'
-import RoomReducer from '../features/roomSlice'
+import ModalReducer from "../features/modalSlice";
+import RoomReducer from "../features/roomSlice";
+import SidebarReducer from "../features/sidebarSlice";
 
 export const store = configureStore({
   reducer: {
     modal: ModalReducer,
-    room: RoomReducer
+    room: RoomReducer,
+    sidebar: SidebarReducer,
   },
 });
 

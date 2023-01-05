@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import {
   AppLoadingContainer,
   AppLoadingInnerContents,
+  OpenSideBarButton,
   RootLayout,
 } from "../common/styles/root.styled";
 import Sidebar from "../components/Sidebar/Sidebar";
@@ -14,9 +15,19 @@ import { Comment } from "react-loader-spinner";
 import imageLogo from '../assets/mainlogo.jpg'
 import { ThemeProvider } from "styled-components";
 import { theme } from "../common/styles/theme";
+import { DoubleArrow } from "@material-ui/icons";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { collapseSidebar } from "../features/sidebarSlice";
 
 const AppRouter = () => {
   const [user, loading] = useAuthState(auth);
+  const dispatch = useAppDispatch()
+  const {isCollapsed} = useAppSelector(state => state.sidebar)
+
+  const openSideBarHandler = () => {
+    dispatch(collapseSidebar())
+  }
+
   if (loading) {
     return (
       <AppLoadingContainer>
@@ -46,6 +57,9 @@ const AppRouter = () => {
           <Header />
           <RootLayout>
             <Sidebar />
+            <OpenSideBarButton>
+              {isCollapsed && <DoubleArrow onClick={openSideBarHandler}/>}
+            </OpenSideBarButton>
             <Routes>
               <Route path="/" element={<Chat />} />
             </Routes>

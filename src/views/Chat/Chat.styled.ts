@@ -8,6 +8,7 @@ const ChatContainer = styled.div`
   overflow-y: scroll;
   margin: 4rem 0 0 0;
   margin-top: 4rem;
+  background: ${props => props.theme.bgColorMain};
 `;
 
 const ChatHeader = styled.div`

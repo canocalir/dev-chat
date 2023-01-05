@@ -4,11 +4,11 @@ const SideBarLinkContainer = styled.div`
   display: flex;
   font-size: 0.8rem;
   align-items: center;
-  padding-left: 0.1rem;
+  padding: 0.1rem;
   cursor: pointer;
   &:hover{
     opacity:0.9;
-    background-color: #a9c40f;
+    background-color: ${props => props.theme.sideBarLinkColor1};
     transition: 300ms ease-in;
   }
   h3{

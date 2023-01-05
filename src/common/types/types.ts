@@ -6,7 +6,7 @@ export type SideBarLinkProps = {
   Icon?: OverridableComponent<SvgIconTypeMap<{}, "svg">>;
   addChannel?: true;
   id?: string;
-}
+};
 
 export type ChatInputProps = {
   channelId: string | null;
@@ -26,9 +26,13 @@ export type MessageProps = {
 
 export type RoomSliceProps = {
   roomId: null;
-}
+};
 
 export type ModalSliceProps = {
   isOpen: boolean;
   name: string;
-}
+};
+
+export type sidebarSliceProps = {
+  isCollapsed: boolean;
+};
